@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% load bootstrap5 %}
+
+{% block content %}
+{{ block.super}}
+{%for profile in profile%}
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+        <img src="{{profile.profile_pic.url}}" class="profile-" style="
+            width: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 10px;
+            background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+        " alt="">
+        <h5 class="text-center" style="padding-top: 10px;">{{profile.user.username}}'s <strong>Bio</strong></h5>
+        <hr style="color: brown;">
+        <p class="text-center">'{{profile.bio}}'</p>
+        <hr style="color: brown;">
+    </div>
+    <div class="col-md-7">
+        <h5 class="text-center" style="border-bottom: solid 1px brown; padding: 10px;">Projects added by
+            {{profile.user.username}}</h5>
+        {%for project in projects%}
+        <div>
+            <p style="color: brown;"><i class="fa fa-linode" aria-hidden="true"></i> <strong>{{project.name}}</strong>
+            </p>
+            <p style="padding-left: 10px;">{{project.about}}</p>
+        </div>
+        {%endfor%}
+    </div>
+    <div class="col-md-1"></div>
+</div>
+{%endfor%}
+{% endblock %}
