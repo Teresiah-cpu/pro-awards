@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <form action="{%url 'review' id%}" class="form-group" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="card-body">
+                <div class="card-text">
+                    {% bootstrap_form rank_form%}
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success btn-lg" value="Rate">
+        </form>
+    </div>
+    <div class="col-md-4">
+        {%for rank in ranks%}
+        <div style="border: 1px solid brown; border-radius: 5px; margin-bottom: 15%">
+            <div>
+                <h5 style="margin-left: 10px;">{{rank.user.username}}</h5>
+                <p style="margin-left: 15px;">"{{rank.comment}}"</p>
+            </div>
+            <div class="rating">
+                <p style="margin-left: 10px;">Design Rating: <span>{{rank.design_avg}}</span></p>
+            </div>
+
+            <div class="rating">
+                <p style="margin-left: 10px;">Usability Rating: <span>{{rank.usability_avg}}</span></p>
+            </div>
+
+
+            <div class="rating">
+                <p style="margin-left: 10px;">Content Rating: <span>{{rank.content_avg}}</span></p>
+            </div>
+
+            <hr>
+
+            <div class="rating">
+                <p style="margin-left: 10px;"><strong>Average Score:</strong> <span>{{rank.score}}</span></p>
+            </div>
+
+        </div>
+        {%endfor%}
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% bootstrap_javascript %}
+{% endblock %}
+
+</html>
+{%endblock %}
