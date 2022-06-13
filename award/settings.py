@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'awardapp',
-    'bootstrap3',
+    'bootstrap5',
+    'rest_framework',
+    'registration',
+    'rest_framework.authtoken',
 
 ]
 
@@ -69,6 +72,13 @@ TEMPLATES = [
         },
     },
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 WSGI_APPLICATION = 'award.wsgi.application'
 
@@ -118,8 +128,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, '/static/'),
+)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
