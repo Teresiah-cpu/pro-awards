@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="text-center">
+            {% if results%}
+            <h3
+                style="color: white; background-color: rgb(221, 161, 94); padding: 10px; border: 1px solid  rgb(188, 108, 37); border-radius: 10px;">
+                <i class="fa fa-share-square-o" aria-hidden="true"></i> Found {{results|length }} of your search;
+                {{message}}</h3>
+
+            {%for project in results%}
+            <div class="card" style="margin-top: 10px; margin-bottom: 20px;"></div>
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="{{project.project_image.url}}" class="img-fluid" />
+                <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{project.name}}</h5>
+                <p class="card-text">
+                    {{project.about}}
+                </p>
+                <a href="{{project.project_link}}" class="btn btn-primary">View {{project.name}} site</a>
+                <a href="{%url 'review' project.id%}" class="btn btn-primary">Review & Rate</a>
+                <hr>
+                <p>By <em><strong>{{project.user.username}}</strong></em></p>
+            </div>
+        </div>
+
+        {%endfor%}
+
+        {% else %}
+        <h2> Found 0 post name for the search term {{message}}</h2>
+        {% endif %}
+    </div>
+</div>
+
+<div class="col-md-3"></div>
+
+</div>
+{% endblock %}
