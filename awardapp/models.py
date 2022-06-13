@@ -45,7 +45,7 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
-class Review(models.Model):
+# class Review(models.Model):
     Rank_Index= ((1, '1'),(2, '2'),(3, '3'),(4, '4'),(5, '5'),(6, '6'),(7, '7'),(8, '8'),(9, '9'),(10, '10'),)
 
     design_rating = models.IntegerField(choices=Rank_Index, default=0)
@@ -74,7 +74,7 @@ class Review(models.Model):
         return self.comment
 
 
-# class Profile(models.Model):
+class Profile(models.Model):
     class Meta:
         db_table = 'profile'
 
