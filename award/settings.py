@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'registration',
     'rest_framework.authtoken',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
 ]
 
