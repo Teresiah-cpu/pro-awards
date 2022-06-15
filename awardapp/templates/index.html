@@ -11,7 +11,7 @@
         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
             <img src="{{project.project_image.url}}" class="img-fluid" />
             <a href="#!">
-                <!-- <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div> -->
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
             </a>
         </div>
         <div class="card-body">
@@ -21,13 +21,12 @@
             </p>
             <a href="{{project.project_link}}" style="background-color:rgb(28, 7, 61);" class="btn btn-primary">View
                 {{project.name}} site</a>
-            <a href="#" style="background-color:rgb(28, 7, 61);"
+            <a href="%url 'review' project.id%" style="background-color:rgb(28, 7, 61);"
                 class="btn btn-primary">Review & Rate</a>
             <hr>
-            <p>By <em><strong>{{project.user.username}}</strong></em></p>
+            <p>By <em><strong>{{project.user.username|title}}</strong></em></p>
         </div>
     </div>
-
     {% empty %}
     <div class="row">
         <h2 class="text-center">There no projects added yet</h2>
