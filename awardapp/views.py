@@ -40,7 +40,7 @@ def profile(request):
 
 @login_required(login_url='login')
 def new_project(request):
-    title='Add a project of your own'
+    title='Add your project'
     current_user = request.user
     project=Project.objects.all()
     if request.method == 'POST':
@@ -52,11 +52,11 @@ def new_project(request):
             
             project.save()
         return redirect('home')
-
     else:
         form = AddProjectForm()
     
     return render(request, 'new_project.html', {'title':title,'form':form})
+
 
 
 @login_required(login_url='login')
@@ -82,7 +82,9 @@ def review(request, project):
 
             usability=[u.usability_rating for u in project_ratings]
             usability_average=sum(usability) /len(usability)
+
             score=(design_average + content_average + usability_average)/3
+
             rating.design_avg=round(design_average, 2)
             rating.usability_avg=round(usability_average, 2)
             rating.content_avg=round(content_average, 2)

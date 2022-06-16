@@ -21,8 +21,8 @@
             </p>
             <a href="{{project.project_link}}" style="background-color:rgb(28, 7, 61);" class="btn btn-primary">View
                 {{project.name}} site</a>
-            <a href="%url 'review' project.id%" style="background-color:rgb(28, 7, 61);"
-                class="btn btn-primary">Review & Rate</a>
+            <!-- <a href="% url 'review' project.id %" style="background-color:rgb(28, 7, 61);" -->
+            <a href="{ %url 'review' project.id% }" style="background-color:rgb(106, 4, 15);" class="btn btn-primary">Review & Rate</a>
             <hr>
             <p>By <em><strong>{{project.user.username|title}}</strong></em></p>
         </div>
